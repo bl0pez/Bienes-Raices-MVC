@@ -3,6 +3,7 @@ import bcrypt from "bcryptjs";
 import { sendEmail } from '../helpers/email.js';
 import { generarId } from '../helpers/tokens.js';
 import User from '../models/User.js';
+import { generateJWT } from '../helpers/createToken.js';
 
 export const login = (req, res) => {
     res.render('auth/login', {
@@ -11,7 +12,63 @@ export const login = (req, res) => {
 }
 
 export const authentica = async (req, res) => {
-    
+    const { email, password } = req.body;
+
+    await check('email').isEmail().withMessage('El email no es válido').run(req);
+    await check('password').isLength({ min: 6 }).withMessage('La contraseña debe tener al menos 6 caracteres').run(req);
+
+    const errores = validationResult(req);
+
+    //Mostramos errores
+    if (!errores.isEmpty()) {
+        return res.render('auth/login', {
+            title: 'Login',
+            errors: errores.array(),
+            email,
+            password
+        })
+    }
+
+    //Verificar si el usuario existe
+    const user = await User.findOne({
+        where: {email}
+    });
+
+    if (!user) {
+        return res.render('auth/login', {
+            title: 'Login',
+            errors: [{ msg: 'El usuario no existe' }],
+        })
+    }
+
+    //Verificamos que la cuenta este confirmada
+    if(!user.verified){
+        return res.render('auth/login', {
+            title: 'Login',
+            errors: [{msg:'El usuario no ha verificado su cuenta'}]
+        })
+    }
+
+
+    //Verificar el password
+    if(!user.verifyPassword(password)){
+        return res.render('auth/login', {
+            title: 'Login',
+            errors: [{msg:'El password es incorrecto'}]
+        })
+    }
+
+
+    //Crear el token
+    const token = generateJWT(user.id)
+
+    return res.cookie('_token', token, {
+        httpOnly: true,
+
+        //secure: process.env.NODE_ENV === 'production',
+    }).redirect('/mis-propiedades');
+
+
 }
 
 export const registro = (req, res) => {
@@ -21,8 +78,6 @@ export const registro = (req, res) => {
 }
 
 export const create_user = async (req, res) => {
-
-    console.log(req.body);
 
     //validación de campos
     await check('name').notEmpty().withMessage('El nombre es obligatorio').run(req);
@@ -107,6 +162,8 @@ export const confirmAccount = async (req, res) => {
         message: 'Tu cuenta ha sido confirmada. Ya puedes iniciar sesión.',
         error: false,
     });
+
+
 
 }
 

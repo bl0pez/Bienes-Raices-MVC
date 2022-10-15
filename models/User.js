@@ -32,4 +32,10 @@ const User = dbConfig.define('user', {
     }
 });
 
+
+//Método para verificar password
+User.prototype.verifyPassword = function(password){
+    return bcrypt.compareSync(password, this.password);
+}
+
 export default User;

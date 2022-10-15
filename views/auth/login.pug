@@ -4,6 +4,11 @@ block content
         h1(class="text-4xl my-10 font-extrabold text-center") Bienes 
             span(class="font-normal") Raíces
         h2(class="text-center text-2xl font-extrabold") #{title}
+        
+        if errors 
+            div(class="alert-error")
+                each error in errors
+                    p(class="alert-error__text") #{error.msg}
 
         div(class="mt-8 mx-auto max-w-md")
             div(class="bg-white py-8 px-4 shadow")
@@ -13,7 +18,7 @@ block content
                         input(type="email" id="email" name="email" class="input" placeholder="Tu email")
                     div
                         label(for="password" class="label") Password
-                        input(type="password" id="password" password="password" class="input" placeholder="Tu password")
+                        input(type="password" id="password" name="password" class="input" placeholder="Tu password")
                     
                     input(type="submit" value="Iniciar Sesión" class="btn")
                 div(class="content-link")
