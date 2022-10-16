@@ -3,6 +3,7 @@ import express from "express";
 import dbConfig from './config/dbConfig.js';
 
 import userRouter from './routes/user.router.js';
+import propertiesRouter from './routes/properties.router.js';
 
 
 const app = express();
@@ -27,6 +28,7 @@ app.use(express.static('public'));
 
 //Routung
 app.use('/auth', userRouter);
+app.use('/', propertiesRouter);
 
 
 app.listen(port, () => {
