@@ -1,0 +1,50 @@
+extends ../layout/index
+block content
+    .py-10
+        form(action="" class="max-w-4xl mx-auto bg-white md:p-5 shadow p-2")
+            div
+                h3(class="text-lg leading-6 font-medium text-gray-900") Información General
+                p(class="text-gray-600") Añade información sobre la propiedad en venta
+            div(class="py-2")
+                label(class="label") Título del Anuncio
+                input(type="text" class="input" placeholder="Ej. Casa en el Lago")
+            div(class="md:grid md:grid-cols-2 md:gap-4")
+                div(class="py-2")
+                    label(for="categoria" class="label") Categoría
+                    select(name="categoria" id="categoria" class="input")
+                        option(value="" disabled selected) -- Seleccione --
+                        option(value="venta") Venta
+                        option(value="renta") Renta
+                div(class="py-2")
+                    label(for="precio" class="label") Precio
+                    select(name="precio" id="precio" class="input")
+                        option(value="" disabled selected) -- Seleccione --
+                        option(value="venta") Venta
+                        option(value="renta") Renta
+            div(class="md:grid md:grid-cols-3 md:gap-4")
+                div(class="py-2")
+                    label(for="habitaciones" class="label") Habitaciones
+                    select(name="habitaciones" id="habitaciones" class="input")
+                        option(value="" disabled selected) -- Seleccione --
+                        - let habitacion = 1;
+                            while habitacion <= 6
+                                option(value=habitacion) #{habitacion++}
+                div(class="py-2")
+                    label(for="estacionamiento" class="label") Estacionamiento
+                    select(name="estacionamiento" id="estacionamiento" class="input")
+                        option(value="" disabled selected) -- Seleccione --
+                        - let estacionamiento = 1;
+                            while estacionamiento <= 5
+                                option(value=estacionamiento) #{estacionamiento++}
+                div(class="py-2")
+                    label(for="wc" class="label") WC
+                    select(name="wc" id="wc" class="input")
+                        option(value="" disabled selected) -- Seleccione --
+                        - let wc = 1;
+                            while wc <= 5
+                                option(value=wc) #{wc++}
+block scripts 
+    script(src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js")
+    script(src="https://unpkg.com/esri-leaflet@3.0.8/dist/esri-leaflet.js")
+    script(src="https://unpkg.com/esri-leaflet-geocoder@2.2.13/dist/esri-leaflet-geocoder.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geosearch/2.7.0/bundle.min.js")
