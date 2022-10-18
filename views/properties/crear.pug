@@ -18,14 +18,14 @@ block content
                     label(for="categoria" class="label") Categoría
                     select(name="categoria" id="categoria" class="input")
                         option(value="" disabled selected) -- Seleccione --
-                        option(value="venta") Venta
-                        option(value="renta") Renta
+                        each category in categories
+                            option(value=category.id)= category.name
                 div(class="py-2")
                     label(for="precio" class="label") Precio
                     select(name="precio" id="precio" class="input")
                         option(value="" disabled selected) -- Seleccione --
-                        option(value="venta") Venta
-                        option(value="renta") Renta
+                        each price in prices
+                            option(value=price.id)= price.price
             div(class="md:grid md:grid-cols-3 md:gap-4")
                 div(class="py-2")
                     label(for="habitaciones" class="label") Habitaciones

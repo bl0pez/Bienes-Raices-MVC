@@ -26,15 +26,6 @@ const Propertie = dbConfig.define('propertie', {
             },
         }
     },
-    price: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        validate: {
-            notEmpty: {
-                msg: 'El precio es obligatorio',
-            },
-        }
-    },
     rooms: {
         type: DataTypes.INTEGER,
         allowNull: false,

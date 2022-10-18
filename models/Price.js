@@ -3,7 +3,7 @@ import dbConfig from "../config/dbConfig.js";
 
 const Price = dbConfig.define("price", {
     price: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
         validate: {
             notEmpty: {

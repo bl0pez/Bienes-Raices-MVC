@@ -1,6 +1,8 @@
 import Sequelize from "sequelize";
+import loadEnv from "../helpers/env.js";
 
-console.log(process.env.DB_NAME);
+// Load environment variables
+loadEnv();
 
 const dbConfig = new Sequelize({
     dialect: "mysql",

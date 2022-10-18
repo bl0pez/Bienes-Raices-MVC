@@ -1,7 +1,6 @@
-import 'dotenv/config'
 import express from "express";
-import dbConfig from './config/dbConfig.js';
 
+import dbConfig from './config/dbConfig.js';
 import userRouter from './routes/user.router.js';
 import propertiesRouter from './routes/properties.router.js';
 
@@ -16,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 dbConfig.authenticate()
     dbConfig.sync()
     .then(() => console.log('Base de datos conectada'))
-    .catch(error => console.log(error));
+    .catch(error => console.log('Error al conectar la base de datos'));
 
 //habilitar pug
 app.set('view engine', 'pug');
