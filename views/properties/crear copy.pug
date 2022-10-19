@@ -13,55 +13,57 @@ block content
             div
                 h3(class="text-lg leading-6 font-medium text-gray-900") Información General
                 p(class="text-gray-600") Añade información sobre la propiedad en venta
-                include ../templates/input
-                    block label
-                        | Título
-                    - var id = "title"
-                    - var placeholder = "Ej. Casa en la playa"
-                    - var name = "title"
-                    - var value = datos.title
-                div(class="py-2")
-                    label(for="description" class="label")
-                        | Descripción
-                    textarea(class="input" placeholder="Ej. Casa en la playa" id="description" name="description")= datos.description ? datos.description : ''
+            include ../templates/input
+                block label
+                    | Título
+                - var id = "title"
+                - var placeholder = "Ej. Casa en la playa"
+                - var name = "title"
+            include ../templates/input
+                block label
+                    | Descripción
+                - var id = "description"
+                - var placeholder = "Ej. Casa en la playa con vista al mar"
+                - var name = "description"
             div(class="md:grid md:grid-cols-2 md:gap-4")
                 include ../templates/label
                     block label
                         | Categoría
-                    select(name="category" id="category" class="input")
+                    select(name="categoria" id="categoria" class="input")
                         option(value="" disabled selected) -- Seleccione --
                         each category in categories
-                            option(value=category.id selected=(datos.category ? datos.category == category.id : false))= category.name
-                include ../templates/label
-                    block label
-                        | Precio
-                    - var id = "priceRange"
-                    select(name="priceRange" id="priceRange" class="input")
+                            option(value=category.id)= category.name
+                    
+                    
+
+                div(class="py-2")
+                    label(for="precio" class="label") Precio
+                    select(name="precio" id="precio" class="input")
                         option(value="" disabled selected) -- Seleccione --
                         each price in prices
-                            option(value=price.id selected=(datos.priceRange ? datos.priceRange == price.id : false))= price.price
+                            option(value=price.id)= price.price
             div(class="md:grid md:grid-cols-3 md:gap-4")
                 div(class="py-2")
-                    label(for="rooms" class="label") Habitaciones
-                    select(name="rooms" id="rooms" class="input")
+                    label(for="habitaciones" class="label") Habitaciones
+                    select(name="habitaciones" id="habitaciones" class="input")
                         option(value="" disabled selected) -- Seleccione --
-                        - let n = 1;
-                            while n <= 6
-                                option(value=n selected=(datos.rooms ? datos.rooms == n ? true : false : null)) #{n++}
+                        - let habitacion = 1;
+                            while habitacion <= 6
+                                option(value=habitacion) #{habitacion++}
                 div(class="py-2")
-                    label(for="parking" class="label") Estacionamiento
-                    select(name="parking" id="parking" class="input")
+                    label(for="estacionamiento" class="label") Estacionamiento
+                    select(name="estacionamiento" id="estacionamiento" class="input")
                         option(value="" disabled selected) -- Seleccione --
                         - let estacionamiento = 1;
                             while estacionamiento <= 5
-                                option(value=estacionamiento selected=(datos.parking ? datos.parking == estacionamiento ? true : false : null)) #{estacionamiento++}
+                                option(value=estacionamiento) #{estacionamiento++}
                 div(class="py-2")
                     label(for="wc" class="label") WC
                     select(name="wc" id="wc" class="input")
                         option(value="" disabled selected) -- Seleccione --
                         - let wc = 1;
                             while wc <= 5
-                                option(value=wc selected=(datos.wc ? datos.wc == wc ? true : false : null)) #{wc++}
+                                option(value=wc) #{wc++}
             div(class="border-gray-200 border-t py-5 space-y-5")
                 h3(class="text-lg leading-6 font-medium text-gray-900") Ubicación
                 p(class="text-gray-600") Añade la ubicación de la propiedad

@@ -35,6 +35,33 @@ const Propertie = dbConfig.define('propertie', {
             },
         }
     },
+    priceRange: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: 'El precio es obligatorio',
+            }
+        }
+    },
+    parking: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: 'El número de cocheras es obligatorio',
+            }
+        }
+    },
+    wc: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: 'El número de baños es obligatorio',
+            }
+        }
+    },
     street: {
         type: DataTypes.STRING(60),
         allowNull: false,

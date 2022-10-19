@@ -33,6 +33,10 @@ const seed = async () => {
 const removeSeed = async () => {
     try {
 
+        await dbConfig.authenticate();
+
+        await dbConfig.sync({ force: true });
+
         await Promise.all([
             Category.destroy({ where: {}, truncate: true }),
             Price.destroy({ where: {}, truncate: true })
@@ -42,6 +46,7 @@ const removeSeed = async () => {
         exit();
     } catch (error) {
         console.log('Algo salió mal al eliminar los datos');
+        console.log(error.message);
         exit(1);
     }
 }
