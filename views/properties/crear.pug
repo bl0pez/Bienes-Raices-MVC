@@ -35,11 +35,11 @@ block content
                 include ../templates/label
                     block label
                         | Precio
-                    - var id = "priceRange"
-                    select(name="priceRange" id="priceRange" class="input")
+                    - var id = "price"
+                    select(name="price" id="price" class="input")
                         option(value="" disabled selected) -- Seleccione --
                         each price in prices
-                            option(value=price.id selected=(datos.priceRange ? datos.priceRange == price.id : false))= price.price
+                            option(value=price.id selected=(datos.price ? datos.price == price.id : false))= price.price
             div(class="md:grid md:grid-cols-3 md:gap-4")
                 div(class="py-2")
                     label(for="rooms" class="label") Habitaciones

@@ -14,7 +14,6 @@ const privateRouter = async (req, res, next) => {
     try {
 
         const decoded = jwt.verify(_token, process.env.TOKEN_SECRET);
-        console.log(decoded);
         const user = await User.scope('removeAttributes').findByPk(decoded.id);
 
         //Comprobar que el usuario existe

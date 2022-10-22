@@ -41,31 +41,40 @@ export const postCreate = async(req, res) => {
 
     }
 
-    const { title, description, category: categoryId, priceRange: priceId, rooms, wc, parking, lat, lng } = req.body;
+    const { title, description, address, category: categoryId, price, rooms, wc, parking, lat, lng } = req.body;
 
-    console.log(req.body);
 
-    //Crear la propiedad
     try {
         
         const propertie = await Propertie.create({
             title,
             description,
-            categoryId,
-            priceId,
             rooms,
             parking,
             wc,
             address,
             lat,
             lng,
+            categoryId,
+            priceId: price,
+            userId: req.user.id,
+            image: 'aaaaapng'
         });
 
+        const { id } = propertie;
+
+        res.redirect(`/propiedades/agregar-image/${id}`);
 
 
     } catch (error) {
         console.log(error.message);
     }
+    
+
+}
+
+export const addImage = async(req, res) => {
+
     
 
 }
