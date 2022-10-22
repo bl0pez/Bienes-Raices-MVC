@@ -3,7 +3,8 @@ import categories from './categories.js';
 import dbConfig from '../config/dbConfig.js';
 import prices from "./prices.js";
 
-import { Category, Price } from '../models/index.js';
+import { Category, Price, Propertie, User } from '../models/index.js';
+import user from "./user.js";
 
 const seed = async () => {
     try {
@@ -16,7 +17,8 @@ const seed = async () => {
         await Promise.all(
             [
                 Price.bulkCreate(prices),
-                Category.bulkCreate(categories)
+                Category.bulkCreate(categories),
+                User.bulkCreate(user)
             ]
         );
 
@@ -38,8 +40,10 @@ const removeSeed = async () => {
         await dbConfig.sync({ force: true });
 
         await Promise.all([
+            Propertie.destroy({ truncate: true, cascade: true }),
             Category.destroy({ where: {}, truncate: true }),
-            Price.destroy({ where: {}, truncate: true })
+            Price.destroy({ where: {}, truncate: true }),
+            User.destroy({ where: {}, truncate: true })
         ]);
 
         console.log('Datos eliminados correctamente');

@@ -62,7 +62,7 @@ const Propertie = dbConfig.define('propertie', {
             }
         }
     },
-    street: {
+    address: {
         type: DataTypes.STRING(60),
         allowNull: false,
         validate: {

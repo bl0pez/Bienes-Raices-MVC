@@ -67,10 +67,10 @@ block content
                 p(class="text-gray-600") Añade la ubicación de la propiedad
                 div(id="mapa" class="my-2 h-80")
                 div
-                    p(class="text-gray-600 calle")
-                input(type="hidden" name="calle" id="calle" )
-                input(type="hidden" name="lat" id="lat" )
-                input(type="hidden" name="lng" id="lng")
+                    p(class="text-gray-600 address")= datos.street ? datos.street : ''
+                input(type="hidden" name="address" id="address" value=datos.street ? datos.street : '')
+                input(type="hidden" name="lat" id="lat" value=datos.lat ? datos.lat : '')
+                input(type="hidden" name="lng" id="lng" value=datos.lng ? datos.lng : '')
             input(type="submit" value="Añadir Imagen" class="btn")
 
 block scripts 

@@ -25,16 +25,21 @@ const User = dbConfig.define('user', {
     }
 }, {
     hooks: {
-        beforeCreate: function(user){
+        beforeCreate: function (user) {
             const salt = bcrypt.genSaltSync(10);
             user.password = bcrypt.hashSync(user.password, salt);
+        }
+    },
+    scopes: {
+        removeAttributes: {
+            attributes: { exclude: ['password', 'token', 'verified', 'createdAt', 'updatedAt'] }
         }
     }
 });
 
 
 //Método para verificar password
-User.prototype.verifyPassword = function(password){
+User.prototype.verifyPassword = function (password) {
     return bcrypt.compareSync(password, this.password);
 }
 

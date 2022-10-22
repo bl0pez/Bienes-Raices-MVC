@@ -20,6 +20,7 @@ const dbConfig = new Sequelize({
         acquire: 30000,
         idle: 10000
     },
+    logging: false
 });
 
 export default dbConfig;

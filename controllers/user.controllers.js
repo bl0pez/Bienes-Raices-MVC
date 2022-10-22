@@ -58,15 +58,10 @@ export const authentica = async (req, res) => {
         })
     }
 
+    //Autenticar al usuario
+    const token = generateJWT(user.id);
 
-    //Crear el token
-    const token = generateJWT(user.id)
-
-    return res.cookie('_token', token, {
-        httpOnly: true,
-
-        //secure: process.env.NODE_ENV === 'production',
-    }).redirect('/mis-propiedades');
+    return res.cookie('_token', token, {}).redirect('/mis-propiedades');
 
 
 }

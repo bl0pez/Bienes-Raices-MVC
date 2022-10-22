@@ -1,4 +1,5 @@
 import express from "express";
+import cookieParser from "cookie-parser";
 
 import dbConfig from './config/dbConfig.js';
 import userRouter from './routes/user.router.js';
@@ -7,6 +8,7 @@ import propertiesRouter from './routes/properties.router.js';
 
 const app = express();
 const port = process.env.PORT || 3000;
+app.use(cookieParser());
 
 //habilitar lectura de datos
 app.use(express.urlencoded({ extended: true }));

@@ -1,6 +1,5 @@
 import { validationResult } from "express-validator";
-import Category from "../models/Category.js";
-import Price from "../models/Price.js";
+import { Propertie, Price, Category } from '../models/index.js'
 
 export const admin = (req, res) => {
     res.render('properties/admin', {
@@ -40,6 +39,32 @@ export const postCreate = async(req, res) => {
             datos: req.body
         });
 
+    }
+
+    const { title, description, category: categoryId, priceRange: priceId, rooms, wc, parking, lat, lng } = req.body;
+
+    console.log(req.body);
+
+    //Crear la propiedad
+    try {
+        
+        const propertie = await Propertie.create({
+            title,
+            description,
+            categoryId,
+            priceId,
+            rooms,
+            parking,
+            wc,
+            address,
+            lat,
+            lng,
+        });
+
+
+
+    } catch (error) {
+        console.log(error.message);
     }
     
 
