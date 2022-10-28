@@ -1,0 +1,19 @@
+extends ../layout/admin
+block styles
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.css")
+block content
+    .py-10
+        h2.text-2xl.font-semibold.text-gray-700.text-center.mb-6 Agregar Imagen
+        .max-w-4xl.mx-auto
+            form#image.dropzone(action=`/propiedades/agregar-image/${propertie.id}`, method="POST")
+                .dz-message.text-center
+                    p.text-lg.font-semibold.text-gray-700
+                        | Arrastra tus archivos aquí o haz click para subir
+                    p.text-sm.text-gray-400
+                        | Tamaño máximo de archivo: 5MB
+                        br
+                        | Formatos permitidos: png , jpg , jpeg
+            button(id="publicar" type="button" class="btn cursor-pointer") Publicar Propiedad
+
+block scripts
+    script(src="/js/addImage.js")
