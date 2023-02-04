@@ -9,10 +9,9 @@ block content
                 each error in errors
                     p(class="alert-error__text") #{error.msg}
 
-        form(class="max-w-4xl mx-auto bg-white md:p-5 shadow p-2" action="/propiedades/crear" method="POST")
+        form(class="max-w-4xl mx-auto bg-white md:p-5 shadow p-2" method="POST")
             div
-                h3(class="text-lg leading-6 font-medium text-gray-900") Información General
-                p(class="text-gray-600") Añade información sobre la propiedad en venta
+                h3(class="text-lg leading-6 font-medium text-gray-900 text-center") #{title}
                 include ../templates/input
                     block label
                         | Título
@@ -31,7 +30,7 @@ block content
                     select(name="category" id="category" class="input")
                         option(value="" disabled selected) -- Seleccione --
                         each category in categories
-                            option(value=category.id selected=(datos.category ? datos.category == category.id : false))= category.name
+                            option(value=category.id selected=(datos.categoryId ? datos.categoryId == category.id : false))= category.name
                 include ../templates/label
                     block label
                         | Precio
@@ -39,7 +38,7 @@ block content
                     select(name="price" id="price" class="input")
                         option(value="" disabled selected) -- Seleccione --
                         each price in prices
-                            option(value=price.id selected=(datos.price ? datos.price == price.id : false))= price.price
+                            option(value=price.id selected=(datos.priceId ? datos.priceId == price.id : false))= price.price
             div(class="md:grid md:grid-cols-3 md:gap-4")
                 div(class="py-2")
                     label(for="rooms" class="label") Habitaciones
@@ -71,7 +70,7 @@ block content
                 input(type="hidden" name="address" id="address" value=datos.address ? datos.address : '')
                 input(type="hidden" name="lat" id="lat" value=datos.lat ? datos.lat : '')
                 input(type="hidden" name="lng" id="lng" value=datos.lng ? datos.lng : '')
-            input(type="submit" value="Añadir Imagen" class="btn")
+            input(type="submit" value="Guardar cambio" class="btn")
 
 block scripts 
     script(src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js")
