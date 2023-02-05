@@ -6,6 +6,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: password
+      TOKEN_SECRET: ${TOKEN_SECRET}
     ports:
       - 23306:3306
     volumes:

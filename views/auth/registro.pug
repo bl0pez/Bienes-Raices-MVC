@@ -3,7 +3,6 @@ block content
     .py-10
         h1(class="text-4xl my-10 font-extrabold text-center") Bienes 
             span(class="font-normal") Raíces
-        h2(class="text-center text-2xl font-extrabold") #{title}
 
         if errors 
             div(class="alert-error")
@@ -15,16 +14,16 @@ block content
                 form(class="space-y-6" method="POST" action="/auth/registro")
                     div
                         label(for="name" class="label") Nombre
-                        input(type="text" id="name" name="name" class="input" placeholder="Tu nombre" value= user ? user.name : "")
+                        input(type="text" id="name" name="name" class="input" placeholder="Tu nombre" value=name || "")
                     div
                         label(for="email" class="label") Email
-                        input(type="email" id="email" name="email" class="input" placeholder="Tu email" value = user ? user.email : "")
+                        input(type="email" id="email" name="email" class="input" placeholder="Tu email" value =email || "")
                     div
                         label(for="password" class="label") Password
-                        input(type="password" id="password" name="password" class="input" placeholder="Tu password")
+                        input(type="password" id="password" name="password" class="input" placeholder="Tu password" value=password || "")
                     div
                         label(for="password2" class="label") Repetir password
-                        input(type="password" id="password2" name="password2" class="input" placeholder="Repetir password")
+                        input(type="password" id="password2" name="password2" class="input" placeholder="Repetir password" value=password2 || "")
                     
                     input(type="submit" value="Crear cuenta" class="btn")
                 div(class="content-link")

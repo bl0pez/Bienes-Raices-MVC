@@ -15,7 +15,7 @@ router.use(privateRouter);
 router.get('/mis-propiedades', admin);
 
 router.get('/propiedades/crear', getCreate);
-router.post('/propiedades/crear', validateBody,postCreate );
+router.post('/propiedades/crear', validateBody, postCreate);
 
 router.get('/propiedades/agregar-image/:id', addImage);
 router.post('/propiedades/agregar-image/:id', upload.single('image'), uploadImage);

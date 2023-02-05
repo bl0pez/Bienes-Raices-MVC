@@ -3,7 +3,6 @@ block content
     .py-10
         h1(class="text-4xl my-10 font-extrabold text-center") Bienes 
             span(class="font-normal") Raíces
-        h2(class="text-center text-2xl font-extrabold") #{title}
         
         if errors 
             div(class="alert-error")
@@ -15,10 +14,10 @@ block content
                 form(class="space-y-6" action="/auth/login" method="POST")
                     div
                         label(for="email" class="label") Email
-                        input(type="email" id="email" name="email" class="input" placeholder="Tu email")
+                        input(type="email" id="email" name="email" class="input" placeholder="Tu email" value=email)
                     div
                         label(for="password" class="label") Password
-                        input(type="password" id="password" name="password" class="input" placeholder="Tu password")
+                        input(type="password" id="password" name="password" class="input" placeholder="Tu password" value=password)
                     
                     input(type="submit" value="Iniciar Sesión" class="btn")
                 div(class="content-link")
