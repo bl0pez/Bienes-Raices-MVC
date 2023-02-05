@@ -1,9 +1,10 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 
-import dbConfig from './config/dbConfig.js';
+
 import userRouter from './routes/user.router.js';
 import propertiesRouter from './routes/properties.router.js';
+import { dbConnection } from "./config/dbConfig.js";
 
 
 const app = express();
@@ -14,10 +15,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
 //Conexión a la base de datos
-dbConfig.authenticate()
-    dbConfig.sync()
-    .then(() => console.log('Base de datos conectada'))
-    .catch(error => console.log('Error al conectar la base de datos'));
+dbConnection();
 
 //habilitar pug
 app.set('view engine', 'pug');

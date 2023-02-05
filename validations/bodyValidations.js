@@ -1,7 +1,5 @@
 import { body } from "express-validator";
 
-
-
 export const validateBody = [
     body('title').notEmpty().withMessage('El título es obligatorio'),
     body('description').notEmpty().withMessage('La descripción es obligatoria')

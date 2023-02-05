@@ -1,8 +1,7 @@
 
-
-1. Reconstruir los modulos de node 
+ 1. Ejecutar en modo desarrollo
 ```
-npm i 
+docker compose up 
 ```
 2. Agregar seeder a la base de datos
 ```

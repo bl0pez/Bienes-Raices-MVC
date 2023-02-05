@@ -1,6 +1,6 @@
 import { exit } from "node:process";
 import categories from './categories.js';
-import dbConfig from '../config/dbConfig.js';
+import { dbConfig } from '../config/dbConfig.js';
 import prices from "./prices.js";
 
 import { Category, Price, Propertie, User } from '../models/index.js';

@@ -6,8 +6,6 @@ const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const env = path.join(__dirname, '..', '.env');
 
-console.log('env', env);
-
 export default function loadEnv() {
     dotenv.config({ path: env });
 }

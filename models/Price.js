@@ -1,5 +1,5 @@
+import { dbConfig } from "../config/dbConfig.js";
 import { DataTypes } from "sequelize";
-import dbConfig from "../config/dbConfig.js";
 
 const Price = dbConfig.define("price", {
     price: {
