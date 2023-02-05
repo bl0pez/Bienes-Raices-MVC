@@ -1,7 +1,9 @@
 import jwt from 'jsonwebtoken';
-import { User } from '../models/index.js';
+import User from '../models/User.js';
 
 const privateRouter = async (req, res, next) => {
+
+    console.log('Verificando token');
 
     //Verificar el token
     const { _token } = req.cookies;
@@ -20,6 +22,7 @@ const privateRouter = async (req, res, next) => {
         if(!user) {
             return res.redirect('/auth/login');
         }
+
 
         req.user = user;
         return next();

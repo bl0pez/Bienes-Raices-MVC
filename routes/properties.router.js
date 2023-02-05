@@ -14,16 +14,16 @@ router.use(privateRouter);
 
 router.get('/mis-propiedades', admin);
 
-router.get('/propiedades/crear', getCreate);
-router.post('/propiedades/crear', validateBody, postCreate);
+router.get('/mis-propiedades/crear', getCreate);
+router.post('/mis-propiedades/crear', validateBody, postCreate);
 
-router.get('/propiedades/agregar-image/:id', addImage);
-router.post('/propiedades/agregar-image/:id', upload.single('image'), uploadImage);
+router.get('/mis-propiedades/agregar-image/:id', addImage);
+router.post('/mis-propiedades/agregar-image/:id', upload.single('image'), uploadImage);
 
-router.get('/propiedades/editar/:id', editPropertie);
-router.post('/propiedades/editar/:id', validateBody, updatePropertie);
+// router.get('/propiedades/editar/:id', editPropertie);
+// router.post('/propiedades/editar/:id', validateBody, updatePropertie);
 
-router.post('/propiedades/eliminar/:id', deletePropertie);
+// router.post('/propiedades/eliminar/:id', deletePropertie);
 
 
 export default router;

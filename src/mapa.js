@@ -1,6 +1,14 @@
 (function () {
 
-    console.log();
+    //Obtener la dirección actual
+    window.onload = () => {
+        window.navigator.geolocation.getCurrentPosition((position) => {
+            const { latitude, longitude } = position.coords;
+            document.querySelector('#lat').value = latitude;
+            document.querySelector('#lng').value = longitude;
+        });
+    }
+
 
     const lat = document.querySelector('#lat').value || -18.4823629;
     const lng = document.querySelector('#lng').value || -70.3125001;

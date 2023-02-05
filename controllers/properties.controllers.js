@@ -28,6 +28,7 @@ export const admin = async (req, res) => {
 //Vista de Crear Propiedad
 export const getCreate = async (req, res) => {
 
+
     //Obtener Precios y Categorías de la base de datos
     const [prices, categories] = await Promise.all([Price.findAll(), Category.findAll()]);
 
@@ -37,6 +38,7 @@ export const getCreate = async (req, res) => {
         categories,
         datos: {}
     });
+
 }
 
 export const postCreate = async (req, res) => {
@@ -81,7 +83,7 @@ export const postCreate = async (req, res) => {
 
         const { id } = propertie;
 
-        res.redirect(`/propiedades/agregar-image/${id}`);
+        res.redirect(`/mis-propiedades/agregar-image/${id}`);
 
 
     } catch (error) {
